@@ -9,6 +9,34 @@
     Recipe.create(
       name: "Recipe #{i + 1}",
       ingredients: '227g tub clotted cream, 25g butter, 1 tsp cornflour,100g parmesan, grated nutmeg, 250g fresh fettuccine or tagliatelle, snipped chives or chopped parsley to serve (optional)',
-      instruction: 'In a medium saucepan, stir the clotted cream, butter, and cornflour over a low-ish heat and bring to a low simmer. Turn off the heat and keep warm.'
+      instruction: 'In a medium saucepan, stir the clotted cream, butter, and cornflour over a low-ish heat and bring to a low simmer. Turn off the heat and keep warm.',
+      image: 'image.jpg'
     )
 end
+
+books = Book.create([
+    {
+        name: "the power of positive thinking",
+        price: "12.9",
+        author: "Norman Vincent Peal",
+        category: "self help"
+    },
+    {
+        name: "Atomic Habit",
+        price: "12.9",
+        author: "James Clear",
+        category: "self help"
+    },
+    {
+        name: "The power of Habits",
+        price: "12.9",
+        author: "Charles Duhigg",
+        category: "self help"
+    },
+    {
+        name: "Attitude Is Everything",
+        price: "12.9",
+        author: "Jeff Keller",
+        category: "self help"
+    }
+])
