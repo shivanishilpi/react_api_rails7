@@ -4,6 +4,8 @@ import Home from "../components/Home";
 import Recipes from "../components/Recipes";
 import Recipe from "../components/Recipe";
 import NewRecipe from "../components/NewRecipe";
+import Books from "../components/Books";
+import Book from "../components/Book";
 
 export default (
   <Router>
@@ -12,6 +14,8 @@ export default (
       <Route path="/recipes" element={<Recipes />} />
       <Route path="/recipe/:id" element={<Recipe />} />
       <Route path="/recipe" element={<NewRecipe />} />
+      <Route path="/books" element={<Books />} />
+      <Route path="/book/:id" element={<Book />} />
     </Routes>
   </Router>
 );
