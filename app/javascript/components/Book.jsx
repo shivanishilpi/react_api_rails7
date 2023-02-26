@@ -4,10 +4,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 const Book = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [recipe, setBook] = useState({ category: "" });
+  const [book, setBook] = useState({ category: "" });
 
   useEffect(() => {
-    const url = `/api/v1/show/${params.id}`;
+    const url = `/api/v2/show/${params.id}`;
     fetch(url)
       .then((response) => {
         if (response.ok) {
@@ -24,7 +24,7 @@ const Book = () => {
   };
 
   const deleteBook = () => {
-    const url = `/api/v1/destroy/${params.id}`;
+    const url = `/api/v2/destroy/${params.id}`;
     const token = document.querySelector('meta[name="csrf-token"]').content;
 
     fetch(url, {
@@ -44,11 +44,10 @@ const Book = () => {
       .catch((error) => console.log(error.message));
   };
 
-  const ingredientList = () => {
+  const categoryList = () => {
     let categoryList = "No category available";
-
-    if (recipe.category.length > 0) {
-      categoryList = recipe.category
+    if (book.category.length > 0) {
+      categoryList = book.category
         .split(",")
         .map((category, index) => (
           <li key={index} className="list-group-item">
@@ -57,7 +56,7 @@ const Book = () => {
         ));
     }
 
-    return ingredientList;
+    return categoryList;
   };
 
   const bookName = addHtmlEntities(book.name);
@@ -79,7 +78,7 @@ const Book = () => {
             </ul>
           </div>
           <div className="col-sm-12 col-lg-7">
-            <h5 className="mb-2">Preparation names</h5>
+            <h5 className="mb-2">Preparation name</h5>
             <div
               dangerouslySetInnerHTML={{
                 __html: `${bookName}`,
@@ -92,7 +91,7 @@ const Book = () => {
               className="btn btn-danger"
               onClick={deleteBook}
             >
-              Delete Recipe
+              Delete Book
             </button>
           </div>
         </div>

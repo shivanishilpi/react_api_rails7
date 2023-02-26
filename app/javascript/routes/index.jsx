@@ -6,6 +6,7 @@ import Recipe from "../components/Recipe";
 import NewRecipe from "../components/NewRecipe";
 import Books from "../components/Books";
 import Book from "../components/Book";
+import NewBook from "../components/NewBook";
 
 export default (
   <Router>
@@ -16,6 +17,7 @@ export default (
       <Route path="/recipe" element={<NewRecipe />} />
       <Route path="/books" element={<Books />} />
       <Route path="/book/:id" element={<Book />} />
+      <Route path="/book" element={<NewBook />} />
     </Routes>
   </Router>
 );
