@@ -71,21 +71,17 @@ const Book = () => {
       </div>
       <div className="container py-5">
         <div className="row">
-          <div className="col-sm-12 col-lg-3">
-            <ul className="list-group">
-              <h5 className="mb-2">category</h5>
-              {categoryList()}
-            </ul>
+          <div className="col-8">
+            <strong className="mb-2">Name: </strong>
+            {book.name}<br/>
+            <strong className="mb-2 mt-2">Author: </strong>
+              {book.author}<br/>
+            <strong className="mb-2 mt-2">Price: </strong>
+              {book.price}<br/>
+            <strong className="mb-2 mt-2">Category: </strong> 
+              {book.category}
           </div>
-          <div className="col-sm-12 col-lg-7">
-            <h5 className="mb-2">Preparation name</h5>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${bookName}`,
-              }}
-            />
-          </div>
-          <div className="col-sm-12 col-lg-2">
+          <div className="col-4">
             <button
               type="button"
               className="btn btn-danger"
@@ -95,7 +91,7 @@ const Book = () => {
             </button>
           </div>
         </div>
-        <Link to="/books" className="btn btn-link">
+        <Link to="/books" className="btn btn-info mt-3">
           Back to books
         </Link>
       </div>
