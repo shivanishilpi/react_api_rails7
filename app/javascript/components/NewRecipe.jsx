@@ -6,6 +6,7 @@ const NewRecipe = () => {
   const [name, setName] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instruction, setInstruction] = useState("");
+  const [image, setImage] = useState("");
 
   const stripHtmlEntities = (str) => {
     return String(str)
@@ -22,13 +23,14 @@ const NewRecipe = () => {
     event.preventDefault();
     const url = "/api/v1/recipes/create";
 
-    if (name.length == 0 || ingredients.length == 0 || instruction.length == 0)
+    if (name.length == 0 || ingredients.length == 0 || instruction.length == 0 || image.length == 0)
       return;
 
     const body = {
       name,
       ingredients,
       instruction: stripHtmlEntities(instruction),
+      image
     };
 
     const token = document.querySelector('meta[name="csrf-token"]').content;
@@ -82,6 +84,18 @@ const NewRecipe = () => {
               <small id="ingredientsHelp" className="form-text text-muted">
                 Separate each ingredient with a comma.
               </small>
+            </div>
+            <div className="form-group">
+              <label htmlFor="recipeIngredients">Image</label>
+              <input
+                type="file"
+                name="image"
+                id="recipeImage"
+                className="form-control"
+                required
+                onChange={(event) => onChange(event, setImage)}
+              />
+             
             </div>
             <label htmlFor="instruction">Preparation Instructions</label>
             <textarea
