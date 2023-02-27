@@ -28,11 +28,12 @@ class Api::V2::BooksController < ApplicationController
       render json: @book
     else
       render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   def latest
-    @post = Post.last
-    render json: @post
+    @book = Book.last.to_json(include: [:image])
+    render json: @book
   end
 
   private
