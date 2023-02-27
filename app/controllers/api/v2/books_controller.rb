@@ -10,7 +10,7 @@ class Api::V2::BooksController < ApplicationController
     if book.save 
       render json: book
     else
-      render json: book.errors
+      render json: book.errors, status: :unprocessable_entity
     end
   end
 
@@ -23,6 +23,18 @@ class Api::V2::BooksController < ApplicationController
     render json: { message: 'Book is deleted!' }
   end
 
+  def updated
+    if @book.update
+      render json: @book
+    else
+      render json: @book.errors, status: :unprocessable_entity
+  end
+
+  def latest
+    @post = Post.last
+    render json: @post
+  end
+
   private
 
   def set_recipe
@@ -30,6 +42,6 @@ class Api::V2::BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:name, :author, :price, :category )
+    params.require(:book).permit(:name, :author, :price, :category, :image)
   end
 end

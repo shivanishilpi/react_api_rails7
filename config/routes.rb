@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post 'books/create'
       get '/show/:id', to: 'books#show'
       delete '/destroy/:id', to: 'books#destroy'
+      get 'latest', to: 'books#latest'
     end
   end
   get '/*path' => 'homepage#index'
