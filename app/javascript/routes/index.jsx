@@ -7,7 +7,7 @@ import NewRecipe from "../components/NewRecipe";
 import Books from "../components/Books";
 import Book from "../components/Book";
 import NewBook from "../components/NewBook";
-import Welcome from "../components/Welcome";
+// import Welcome from "../components/Welcome";
 
 export default (
   <Router>
@@ -19,7 +19,7 @@ export default (
       <Route path="/books" element={<Books />} />
       <Route path="/book/:id" element={<Book />} />
       <Route path="/book" element={<NewBook />} />
-      <Route path="/" element={<Welcome/>}/>
+      {/* <Route path="/" element={<Welcome/>}/> */}
     </Routes>
   </Router>
 );

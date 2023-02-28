@@ -65,12 +65,11 @@ const Recipe = () => {
   return (
     <div className="">
       <div className="hero position-relative d-flex align-items-center justify-content-center">
-        {/* <img
-          src="https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp"
-          alt={`${recipe.image}`}
+        <img
+          src={recipe.image_url}
+          alt={`${recipe.image_url}`}
           className="img-fluid position-absolute"
-        /> */}
-        <img src={recipe.image} alt={`${recipe.image}`} className="img-fluid position-absolute"/>
+        />
         <div className="overlay bg-dark position-absolute" />
         <h1 className="display-4 position-relative text-white">
           {recipe.name}

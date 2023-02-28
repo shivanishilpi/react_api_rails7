@@ -15,7 +15,8 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def show
-    render json: @recipe
+    # render json: @recipe
+    render json: RecipeSerializer.new(@recipe).serializable_hash[:data][:attributes]
   end
 
   def update
@@ -38,6 +39,6 @@ class Api::V1::RecipesController < ApplicationController
   end
 
   def recipe_params
-    params.permit(:name, :instruction, :ingredients, :image)
+    params.require(:recipe).permit(:name, :instruction, :ingredients, :image)
   end
 end

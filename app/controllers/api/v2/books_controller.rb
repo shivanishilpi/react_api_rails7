@@ -28,6 +28,7 @@ class Api::V2::BooksController < ApplicationController
       render json: @book
     else
       render json: @book.errors, status: :unprocessable_entity
+    end
   end
 
   def latest
@@ -42,6 +43,6 @@ class Api::V2::BooksController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:name, :author, :price, :category, :image)
+    params.require(:book).permit(:name, :author, :price, :category)
   end
 end
