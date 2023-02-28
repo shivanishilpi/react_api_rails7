@@ -32,8 +32,8 @@ class Api::V2::BooksController < ApplicationController
   end
 
   def latest
-    @book = Book.last.to_json(include: [:image])
-    render json: @book
+    @book = Book.last
+    render json: BookSerializer.new(@book).serializable_hash[:data][:attributes]
   end
 
   private

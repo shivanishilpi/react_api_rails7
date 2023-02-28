@@ -8,13 +8,13 @@ function FileForm(){
          event.preventDefault();
          const data = new FormData();
          
-         data.append("book[name]", event.target.title.value);
+         data.append("book[name]", event.target.name.value);
          data.append("book[image]", event.target.image.files[0]);
          submitToAPI(data);
     }
 
     function submitToAPI(data){
-        fetch("http://localhost:3000/posts",{
+        fetch("http://localhost:3000/api/v2/books",{
             method: "POST",
             body: data
         })
@@ -33,7 +33,7 @@ function FileForm(){
             <br/>
 
             <label htmlFor="image">Image</label>
-            <input type="file" name="iamge" id="image" />
+            <input type="file" name="image" id="image" />
             <br/>
 
             <button typeof="submit">Create Book</button>

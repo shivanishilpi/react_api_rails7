@@ -3,9 +3,9 @@ import React, { useContext, useEffect } from 'react'
 
 function LatestImage() {
     const { latestBook, setLatestBook } = useContext(AppContext);
-
+    debugger
     useEffect(() => {
-        fetch("http://localhost:3000/latest")
+        fetch("http://localhost:3000/api/v2/latest")
         .then((response) => response.json())
         .then((data) => {
             setLatestBook(data.image_url);
