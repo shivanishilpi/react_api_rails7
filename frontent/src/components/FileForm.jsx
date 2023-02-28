@@ -2,7 +2,7 @@ import { AppContext } from "../App";
 import React, { useContext } from "react";
 
 function FileForm(){
-    const { latestBook, setLatestBook } = useContext(AppContext);
+    const { setLatestBook } = useContext(AppContext);
 
     function handleSubmit(event){
          event.preventDefault();
@@ -14,7 +14,7 @@ function FileForm(){
     }
 
     function submitToAPI(data){
-        fetch("http://localhost:3000/api/v2/books",{
+        fetch("http://localhost:3000/api/v2/books/create",{
             method: "POST",
             body: data
         })

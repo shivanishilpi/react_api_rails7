@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       get 'latest', to: 'books#latest'
     end
   end
-  get '/*path' => 'homepage#index'
+
+  # get '/* path' => 'homepage#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
