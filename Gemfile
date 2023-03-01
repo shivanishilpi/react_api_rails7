@@ -67,3 +67,5 @@ group :development do
   # gem "spring"
 end
 
+gem 'rack-cors'
+gem "jsonapi-serializer", "~> 2.2"

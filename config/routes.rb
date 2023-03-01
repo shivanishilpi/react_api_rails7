@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v3 do 
+      resources :airlines, params: :slug
+      resources :reviews, only: [:create, :destroy]
+    end
+  end
+
   # get '/* path' => 'homepage#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
