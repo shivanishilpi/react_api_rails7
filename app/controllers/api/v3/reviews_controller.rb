@@ -11,7 +11,7 @@ class Api::V3::ReviewsController < ApplicationController
         end
     end
 
-    def create
+    def destroy
         review = Review.find(params[:id])
         
         if review.destroy

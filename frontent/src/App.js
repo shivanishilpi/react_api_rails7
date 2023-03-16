@@ -9,54 +9,70 @@ import Footer from 'components/Footer';
 import MainContent from 'components/MainContent';
 import ContactCard from 'components/ContactCard';
 import Joke from 'components/Joke';
+import jokesData from 'components/JokesData';
 
 
 export const AppContext = createContext(null);
 
-function App() {
-  const [latestBook, setLatestBook] = useState(AppContext);
-
-  const nums = [1,2,3,4,5,6,7,8];
-  const product = nums.map( function(num) {
-     return num * 2
-  })
- 
-  console.log(product)
+// function App() {
+//   const [latestBook, setLatestBook] = useState(AppContext);
+//   const jokeComponents = jokesData.map(joke => <Joke key={joke.id } question={joke.question} punchline={joke.punchline} />)
   
-  return (
-    <AppContext.Provider value={{latestBook, setLatestBook}}>
-      <div className="contacts">
+//  return (
+//     <AppContext.Provider value={{latestBook, setLatestBook}}>
+//       <div className="contacts">
         {/* <Header/>
-        <MainContent/>
-        <Footer/>
-        <FileForm />
-        <LatestImage /> */}
+         <MainContent/>
+         <Footer/> */}
+        //  <FileForm />
+        //  <LatestImage />
         {/* <ContactCard
-          name="Mr. Rangila"
-          imgUrl="https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp"
+         name="Mr. Rangila"
+           imgUrl="https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp"
           phone="7835733093"
           email="rangila@gmail.com"
-        /> */}
-        {/* <ContactCard
+        />
+         <ContactCard
           contact = {{name: "Mr. Rangila", imgUrl: "https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp",  phone: "7835733093", email: "rangila@gmail.com" }}
         />
 
-        <ContactCard
-          contact = {{name: "mr. Smith", imgUrl: "https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp", phone: "3374749", email: "smith@gmail.com"}}
-        /> */}
+         <ContactCard
+           contact = {{name: "mr. Smith", imgUrl: "https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp", phone: "3374749", email: "smith@gmail.com"}}
+       /> */}
+//       </div>
+//     </AppContext.Provider>  
+//   );
+// }
 
-         <Joke 
-         punchline="Lorem Ipsum has been the industry's standard dummy" 
-         />
-         <hr/>
-         <Joke 
-         question="simply dummy text of the printing and typesettin"
-         punchline="Lorem Ipsum has been the industry's standard dummy" 
-         />
+class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      character: {}
+    }
+  }
 
+  componentDidMount(){
+    this.setState({loading: true})
+    fetch("http://localhost:3000/api/v3/airlines")
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          loading: false,
+          character: data
+       })
+      // console.log(data)
+    })
+  }
+
+  render(){
+    const text = this.state.loading ? "Loading..." : this.state.character.name
+    return(
+      <div>
+         <p>{text}</p>
       </div>
-    </AppContext.Provider>  
-  );
-}
+    )
+  }
+ }
 
 export default App;

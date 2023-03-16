@@ -25,7 +25,7 @@ function FileForm(){
         .catch((error) => console.error(error));
     }
     return (
-    <div>
+    <div className='form-field'>
         <h1>FileForm</h1>
         <form onSubmit={(e) => handleSubmit(e)}>
             <label htmlFor="name">Name</label>

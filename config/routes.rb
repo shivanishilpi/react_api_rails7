@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get '/show/:id', to: 'books#show'
       delete '/destroy/:id', to: 'books#destroy'
       get 'latest', to: 'books#latest'
+      get 'get_json', to: 'books#get_json'
     end
   end
 

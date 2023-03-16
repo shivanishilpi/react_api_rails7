@@ -1,3 +1,4 @@
+require 'json'
 class Api::V2::BooksController < ApplicationController
   before_action :set_recipe, only: %i[show destroy] 
   def index
@@ -34,6 +35,11 @@ class Api::V2::BooksController < ApplicationController
   def latest
     @book = Book.last
     render json: BookSerializer.new(@book).serializable_hash[:data][:attributes]
+  end
+
+  def get_json
+    @data = File.read("#{Rails.root}/public/get_json.json")
+    @obj = eval(@data)
   end
 
   private
